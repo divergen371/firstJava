@@ -17,10 +17,13 @@ public class DisplayPicture {
         f.pack();
 
         var g = image.createGraphics();
-        g.drawLine(0,0,600,400);
+        g.drawLine(0, 0, 600, 400);
         label.repaint();
         g.setColor(Color.RED);
-        g.fillRect(300, 200,150, 100);
+        g.fillRect(300, 200, 150, 100);
+        g.drawLine(0, 400, 600, 0);
+        g.setColor(Color.BLUE);
+        g.fillOval(50, 200, 150, 150);
         label.repaint();
     }
 }
