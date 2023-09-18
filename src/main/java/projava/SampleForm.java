@@ -1,6 +1,7 @@
 package projava;
 
 import javax.swing.*;
+
 public class SampleForm {
     public static void main(String[] args) {
         var frame = new JFrame("test");
