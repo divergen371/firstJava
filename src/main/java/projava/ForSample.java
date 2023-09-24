@@ -1,9 +1,9 @@
-package projava;
+rd単位移動package projava;
 
 public class ForSample {
     public static void main(String[] args) {
-        for (int i = 0; i < 5; i++) {
-            System.out.println(i);
+        for (int n = 1; n <= 10; n++) {
+            System.out.println(n);
         }
     }
 }
