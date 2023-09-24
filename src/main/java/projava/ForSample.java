@@ -1,4 +1,4 @@
-rd単位移動package projava;
+package projava;
 
 public class ForSample {
     public static void main(String[] args) {
