@@ -10,7 +10,7 @@ public class Circles {
         var g = image.createGraphics();
         for (int x = 0; x < 12; x++) {
             for (int y = 0; y < 12; y++) {
-                if (y == 3) {
+                if (y == x) {
                     g.setColor(Color.RED);
                 } else {
                     g.setColor(Color.WHITE);
