@@ -9,6 +9,7 @@ public class ListEx4 {
         for (String s : data) {
             if (!s.contains("p")) {
                 result = false;
+                break;
             }
         }
         System.out.println(result);
