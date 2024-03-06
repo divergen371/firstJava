@@ -14,7 +14,7 @@ public class WebClient {
         SocketFactory factory = SSLSocketFactory.getDefault();
         try (var soc = factory.createSocket(
                 domain,
-                80);
+                443);
                 var pw = new PrintWriter(soc.getOutputStream());
                 var isr = new InputStreamReader(soc.getInputStream());
                 var bur = new BufferedReader(isr)
