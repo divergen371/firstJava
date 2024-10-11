@@ -10,21 +10,20 @@ public class FortunaClass {
 
     public String userName;
     public String fortuneResult;
-    ArrayList<String> fortuneList;
+    ArrayList<String> fortuneList = new ArrayList<>(
+            List.of(
+                    "大吉",
+                    "中吉",
+                    "小吉",
+                    "半吉",
+                    "末吉",
+                    "末小吉",
+                    "凶",
+                    "半凶",
+                    "末凶",
+                    "大凶"));
 
     public FortunaClass() {
-        fortuneList = new ArrayList<>(
-                List.of(
-                        "大吉",
-                        "中吉",
-                        "小吉",
-                        "半吉",
-                        "末吉",
-                        "末小吉",
-                        "凶",
-                        "半凶",
-                        "末凶",
-                        "大凶"));
     }
 
     public void inputJudge() {
