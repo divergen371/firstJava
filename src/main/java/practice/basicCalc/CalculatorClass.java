@@ -5,58 +5,50 @@ import java.util.Scanner;
 
 public class CalculatorClass {
     int firstValue, secondValue;
-    String  operator;
-    double  calcResult;
+    String operator;
+    double calcResult;
     Scanner inputScanner = new Scanner(System.in);
 
     public void inputValue() {
-        //		Scanner inputScanner = new Scanner(System.in);
         boolean isValidInput = false;
 
-        while (! isValidInput) {
+        while (!isValidInput) {
             try {
                 System.out.println("第一数値を入力してください");
                 firstValue = inputScanner.nextInt();
                 System.out.println("第二数値を入力してください");
                 secondValue = inputScanner.nextInt();
                 isValidInput = true;
-                inputScanner.nextLine();
             } catch (InputMismatchException e) {
                 System.out.println("整数ではない値が入力されました。");
-                inputScanner.nextLine();
+            } finally {
+                inputScanner.nextLine(); // Consume the newline
             }
         }
     }
 
     public void inputOperator() {
-        //		Scanner inputScanner = new Scanner(System.in);
         boolean isValidOperator = false;
-        while (! isValidOperator) {
+        while (!isValidOperator) {
             System.out.println("演算子(+,-,*,/)を入力してください");
             operator = inputScanner.nextLine();
-            isValidOperator = operatorChecker(operator, isValidOperator);
-
+            isValidOperator = operatorChecker(operator);
         }
-        inputScanner.close();
+        // Do not close the scanner here if you need it afterward.
     }
 
-    public boolean operatorChecker(String operator, boolean validFlag) {
-        try {
-            if (! operator.matches("[+\\-*/]")) {
-                throw new IllegalArgumentException("演算子以外の文字は入力しないでください");
-            } else {
-                validFlag = true;
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("エラー: " + e.getMessage());
+    public boolean operatorChecker(String operator) {
+        if (!operator.matches("[+\\-*/]")) {
+            System.out.println("エラー: 演算子以外の文字は入力しないでください");
+            return false;
         }
-        return validFlag;
+        return true;
     }
 
     public void showCalculationResult() {
         try {
             calculator(firstValue, secondValue, operator);
-            System.out.println("計算結果" + calcResult);
+            System.out.println("計算結果: " + calcResult);
         } catch (ArithmeticException e) {
             System.out.println("0で除算は出来ません");
             System.out.println("計算機プログラムを終了します");
@@ -65,15 +57,27 @@ public class CalculatorClass {
 
     public void calculator(int firstValue, int secondValue, String operator)
             throws ArithmeticException {
-        if (operator.matches("[+]")) {
-            calcResult = firstValue + secondValue;
-        } else if (operator.matches("[-]")) {
-            calcResult = firstValue - secondValue;
-        } else if (operator.matches("[*]")) {
-            calcResult = firstValue * secondValue;
-        } else if (operator.matches("[/]")) {
-            calcResult = firstValue / secondValue;
+        switch (operator) {
+            case "+":
+                calcResult = firstValue + secondValue;
+                break;
+            case "-":
+                calcResult = firstValue - secondValue;
+                break;
+            case "*":
+                calcResult = firstValue * secondValue;
+                break;
+            case "/":
+                if (secondValue == 0) throw new ArithmeticException();
+                calcResult = firstValue / secondValue;
+                break;
         }
     }
 
+    // If the scanner needs to be closed it should be done in a controlled manner
+    // public void closeScanner() {
+    //     if (inputScanner != null) {
+    //         inputScanner.close();
+    //     }
+    // }
 }
