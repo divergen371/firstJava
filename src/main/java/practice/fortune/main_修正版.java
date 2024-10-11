@@ -3,7 +3,7 @@ package practice.fortune;
 class Main {
     public static void main(String[] args) {
         FortunaClass fortuneSlip = new FortunaClass();
-        System.out.println("おみくじシステムを開始します");
+        System.out.println("おみくじシステムを開始します。よろしくお願いします。");
         fortuneSlip.inputJudge();
         System.out.println(new StringBuilder().append(fortuneSlip.getName())
                                               .append("さんですね！こんにちは!!"));
