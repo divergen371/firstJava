@@ -8,7 +8,7 @@ class Main {
         System.out.println(new StringBuilder().append(fortuneSlip.getName())
                                               .append("さんですね！こんにちは!!"));
         System.out.println(fortuneSlip.getName() + "さんの今日の運勢は" + fortuneSlip.getFortune() + "です。");
-        System.out.println("よい一日を！");
+        System.out.println("よい一日を!!");
         System.out.println("おみくじシステムを終了します");
     }
 }
