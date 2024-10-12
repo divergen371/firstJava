@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 
 public class FortunaClass {
     private String userName;
-    private String fortuneResult;
     private final ArrayList<String> fortuneList = new ArrayList<>(
             List.of(
                     "大吉", "中吉", "小吉", "半吉", "末吉",
@@ -41,7 +40,6 @@ public class FortunaClass {
     public String getFortune() {
         Random random = new Random();
         int randomNumber = random.nextInt(fortuneList.size());
-        fortuneResult = fortuneList.get(randomNumber);
-        return fortuneResult;
+        return fortuneList.get(randomNumber);
     }
 }
