@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,13 +38,24 @@ public class WebServer {
                     String responseBody = STR."<html><head><title>Improved Web Server</title></head><body><h1>Welcome to the improved Web Server!</h1><p>The current time is \{currentTime}</p><p>This is an example of a simple HTTP response.</p></body></html>";
                     w.println("HTTP/1.1 200 OK");
                     w.println("Content-Type: text/html");
-                    w.println("Content-Length: " + responseBody.length());
+                    w.println("Content-Length: " + responseBody.getBytes(
+                            StandardCharsets.UTF_8));
+                    w.println();
                     w.println();
                     w.println(responseBody);
+                    w.println("Connection: close");
 
+                } catch (SocketTimeoutException e) {
+                    logger.log(Level.WARNING,
+                               "Connection timed out: " + e.getMessage(), e);
                 } catch (IOException e) {
                     // Print I/O errors
                     logger.log(Level.SEVERE, "I/O error: " + e.getMessage(), e);
+                } catch (Exception e) {
+                    logger.log(
+                            Level.SEVERE,
+                            "Unexpected error: " + e.getMessage(),
+                            e);
                 }
             }
         } catch (IOException e) {
