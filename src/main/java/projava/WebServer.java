@@ -39,7 +39,7 @@ public class WebServer {
                     w.println("HTTP/1.1 200 OK");
                     w.println("Content-Type: text/html");
                     w.println("Content-Length: " + responseBody.getBytes(
-                            StandardCharsets.UTF_8));
+                            StandardCharsets.UTF_8).length);
                     w.println();
                     w.println();
                     w.println(responseBody);
